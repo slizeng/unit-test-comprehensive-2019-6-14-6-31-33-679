@@ -2,7 +2,6 @@ package tw.core.generator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tw.core.generator.RandomIntGenerator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -15,12 +14,12 @@ public class RandomIntGeneratorTest {
     private RandomIntGenerator randomIntGenerator;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    void setUp() {
         this.randomIntGenerator = new RandomIntGenerator();
     }
 
     @Test
-    public void should_get_4_digits_numstr_and_every_digit_less_than_10() throws Exception {
+    void should_get_4_digits_number_string_and_every_digit_less_than_10() {
         //given
         //when
         String numStr = randomIntGenerator.generateNums(9, 4);
@@ -31,7 +30,7 @@ public class RandomIntGeneratorTest {
     }
 
     @Test()
-    public void should_throw_exception_when_dufutmax_less_than_numbersOfNeed() throws Exception {
+    void should_throw_exception_when_digitMax_less_than_numbersOfNeed() {
 
         //given
         //when

@@ -12,17 +12,17 @@ public class RandomIntGenerator {
     public RandomIntGenerator() {
     }
 
-    public String generateNums(Integer digitmax, Integer numbersOfNeed) {
+    public String generateNums(Integer digitMax, Integer numbersOfNeed) {
 
-        if (digitmax < numbersOfNeed) {
+        if (digitMax < numbersOfNeed) {
             throw new IllegalArgumentException("Can't ask for more numbers than are available");
         }
 
         Random rng = new Random();
         Set<String> generated = new LinkedHashSet<>();
         while (generated.size() < numbersOfNeed) {
-            Integer next = rng.nextInt(digitmax);
-            generated.add(next.toString());
+            int next = rng.nextInt(digitMax);
+            generated.add(Integer.toString(next));
         }
         return String.join(" ", generated);
     }

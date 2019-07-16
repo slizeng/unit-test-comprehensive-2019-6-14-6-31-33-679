@@ -38,7 +38,7 @@ public class GameControllerTest {
     private GameController gameController;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
         correctAnswer = Answer.createAnswer("1 2 3 4");
@@ -50,12 +50,12 @@ public class GameControllerTest {
     }
 
     @Test
-    public void should_display_guess_result_when_call_controller_play() throws IOException, OutOfGuessCountException {
+    void should_display_guess_result_when_call_controller_play() throws IOException, OutOfGuessCountException {
         //given
         when(mockCommand.input()).thenReturn(correctAnswer);
         when(game.guessHistory()).thenReturn(new ArrayList<>());
         when(game.checkStatus()).thenReturn("");
-        when(game.checkCoutinue()).thenReturn(true, false);
+        when(game.checkContinue()).thenReturn(true, false);
         when(game.guess(errorAnswer)).thenReturn(new GuessResult("", errorAnswer));
         GameController gameController = new GameController(game, mockGameView);
 
@@ -69,11 +69,11 @@ public class GameControllerTest {
     }
 
     @Test
-    public void should_display_end_result_when_game_failed() throws IOException, OutOfGuessCountException {
+    void should_display_end_result_when_game_failed() throws IOException, OutOfGuessCountException {
         //given
         when(mockCommand.input()).thenReturn(errorAnswer);
         when(game.checkStatus()).thenReturn("");
-        when(game.checkCoutinue()).thenReturn(false);
+        when(game.checkContinue()).thenReturn(false);
         GameController gameController = new GameController(game, mockGameView);
 
         //when
@@ -84,7 +84,7 @@ public class GameControllerTest {
     }
 
     @Test
-    public void should_begin_guess_game_when_call_begin_game() throws Exception {
+    void should_begin_guess_game_when_call_begin_game() throws Exception {
         //given
         //when
         gameController.beginGame();

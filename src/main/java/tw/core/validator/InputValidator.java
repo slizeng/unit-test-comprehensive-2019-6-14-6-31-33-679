@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.lang.Integer.parseInt;
-
 /**
  * Created by jxzhong on 2017/5/18.
  */
@@ -14,12 +12,12 @@ public class InputValidator {
         List<String> numList = numStrToList(numStr);
         int NumCount = 4;
         Boolean isValidate = validateDigitsCount(numList, NumCount);
-        return isValidate && validateSingleGigit(numList, NumCount);
+        return isValidate && validateSingleDigit(numList, NumCount);
     }
 
-    private boolean validateSingleGigit(List<String> numList, int numCount) {
+    private boolean validateSingleDigit(List<String> numList, int numCount) {
         return numList.stream()
-                .map(num -> parseInt(num))
+                .map(Integer::parseInt)
                 .distinct()
                 .filter(num -> num < 10).count() == numCount;
     }

@@ -26,7 +26,7 @@ public class AnswerGeneratorTest {
     }
 
     @Test
-    public void should_get_radam_number() throws Exception {
+    public void should_get_random_number() throws Exception {
         RandomIntGenerator randomIntGenerator = mock(RandomIntGenerator.class);
         when(randomIntGenerator.generateNums(anyInt(), anyInt())).thenReturn("1 2 3 4");
         AnswerGenerator answerGenerator = new AnswerGenerator(randomIntGenerator);

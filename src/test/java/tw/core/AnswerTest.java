@@ -14,7 +14,7 @@ public class AnswerTest {
     private Answer actualAnswer;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    public void setUp() {
         actualAnswer = Answer.createAnswer("1 2 3 4");
     }
 

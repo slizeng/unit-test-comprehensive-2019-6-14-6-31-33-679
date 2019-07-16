@@ -9,9 +9,7 @@ import tw.core.model.GuessResult;
 import java.util.ArrayList;
 import java.util.List;
 
-import static tw.core.GameStatus.CONTINUE;
-import static tw.core.GameStatus.FAIL;
-import static tw.core.GameStatus.SUCCESS;
+import static tw.core.GameStatus.*;
 
 /**
  * Created by jxzhong on 2017/5/16.
@@ -21,7 +19,7 @@ public class Game {
     private static final int MAX_TIMES = 6;
     private final Answer actualAnswer;
     private final List<GuessResult> guessResults;
-    private final String CORRECT_RESULT_STANDAR = "4A0B";
+    private final String CORRECT_RESULT_STANDARD = "4A0B";
 
     @Inject
     public Game(AnswerGenerator answerGenerator) throws AnswerFormatIncorrectException {
@@ -30,7 +28,7 @@ public class Game {
     }
 
     public GuessResult guess(Answer inputAnswer) throws OutOfGuessCountException {
-        if (!checkCoutinue()) {
+        if (!checkContinue()) {
             throw new OutOfGuessCountException("Guess count cant over 6!");
         }
         final String result = actualAnswer.check(inputAnswer).getValue();
@@ -43,7 +41,7 @@ public class Game {
         return guessResults;
     }
 
-    public boolean checkCoutinue() {
+    public boolean checkContinue() {
         return this.checkStatus().equals(CONTINUE);
     }
 
@@ -60,6 +58,6 @@ public class Game {
     }
 
     private boolean checkCorrectGuessResult() {
-        return guessResults.stream().anyMatch(result -> result.getResult().contentEquals(CORRECT_RESULT_STANDAR));
+        return guessResults.stream().anyMatch(result -> result.getResult().contentEquals(CORRECT_RESULT_STANDARD));
     }
 }

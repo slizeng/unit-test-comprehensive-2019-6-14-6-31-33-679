@@ -20,11 +20,10 @@ public class AnswerGenerator {
         String randomNumStr = this.randomIntGenerator.generateNums(9, 4);
         InputValidator inputValidator = new InputValidator();
         Boolean isValidate = inputValidator.validate(randomNumStr);
-        if(!isValidate){
+        if (!isValidate) {
             throw new AnswerFormatIncorrectException("Answer format is incorrect");
         }
 
-        Answer answer = Answer.createAnswer(randomNumStr);
-        return answer;
+        return Answer.createAnswer(randomNumStr);
     }
 }

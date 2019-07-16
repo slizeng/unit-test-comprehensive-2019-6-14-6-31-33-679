@@ -50,7 +50,7 @@ public class GameTest {
     public void should_get_the_success_status_when_guess_input_is_correct() throws Exception {
 
         //given
-        excuteSuccessGuess();
+        executeSuccessGuess();
         //when
         String statusOfGame = game.checkStatus();
         //then
@@ -63,7 +63,7 @@ public class GameTest {
     public void should_get_the_fail_status_when_guess_action_count_over_or_equal_6() throws Exception {
 
         //given
-        excuteSixErrorGuess();
+        executeSixErrorGuess();
         //when
         String statusOfGame = game.checkStatus();
         //then
@@ -75,7 +75,7 @@ public class GameTest {
     public void should_get_the_continue_status_when_guess_action_count_less_than_6() throws Exception {
 
         //given
-        excuteErrorGuessLessThanSixTimes();
+        executeErrorGuessLessThanSixTimes();
         //when
         String statusOfGame = game.checkStatus();
         //then
@@ -84,22 +84,22 @@ public class GameTest {
     }
 
     @Test
-    public void should_get_ture_when_incorrect_guess_action_number_less_than_6() throws Exception {
+    public void should_get_true_when_incorrect_guess_action_number_less_than_6() throws Exception {
         //given
         game.guess(Answer.createAnswer("2 1 9 3"));
         //when
-        Boolean isContinue = game.checkCoutinue();
+        Boolean isContinue = game.checkContinue();
         //then
         assertThat(isContinue).isTrue();
 
     }
 
     @Test
-    public void should_get_ture_when_incorrect_guess_action_number_over_or_equal_6() throws Exception {
+    public void should_get_true_when_incorrect_guess_action_number_over_or_equal_6() throws Exception {
         //given
-        excuteSixErrorGuess();
+        executeSixErrorGuess();
         //when
-        boolean isContinue = game.checkCoutinue();
+        boolean isContinue = game.checkContinue();
         //then
         assertThat(isContinue).isFalse();
 
@@ -108,9 +108,9 @@ public class GameTest {
     @Test
     public void should_get_false_when_correct_guess() throws Exception {
         //given
-        excuteSuccessGuess();
+        executeSuccessGuess();
         //when
-        boolean isContinue = game.checkCoutinue();
+        boolean isContinue = game.checkContinue();
         //then
         assertThat(isContinue).isFalse();
 
@@ -119,25 +119,25 @@ public class GameTest {
     @Test
     public void should_throw_exception_when_can_not_contiune() throws Exception {
         //given
-        excuteSuccessGuess();
+        executeSuccessGuess();
         //when
         //then
         assertThrows(OutOfGuessCountException.class, () -> game.guess(Answer.createAnswer("5 2 7 4")));
 
     }
 
-    private void excuteSuccessGuess() throws OutOfGuessCountException {
+    private void executeSuccessGuess() throws OutOfGuessCountException {
         game.guess(Answer.createAnswer("5 2 7 4"));
         game.guess(Answer.createAnswer("1 2 3 4"));
     }
 
-    private void excuteErrorGuessLessThanSixTimes() throws OutOfGuessCountException {
+    private void executeErrorGuessLessThanSixTimes() throws OutOfGuessCountException {
         game.guess(Answer.createAnswer("2 7 3 4"));
         game.guess(Answer.createAnswer("1 5 3 4"));
         game.guess(Answer.createAnswer("1 8 2 1"));
     }
 
-    private void excuteSixErrorGuess() throws OutOfGuessCountException {
+    private void executeSixErrorGuess() throws OutOfGuessCountException {
         game.guess(Answer.createAnswer("2 9 3 4"));
         game.guess(Answer.createAnswer("1 5 3 4"));
         game.guess(Answer.createAnswer("1 8 2 1"));
