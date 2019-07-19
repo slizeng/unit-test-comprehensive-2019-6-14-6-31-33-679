@@ -92,4 +92,3 @@ class GameControllerTest {
         verify(mockGameView).showBegin();
     }
 }
-

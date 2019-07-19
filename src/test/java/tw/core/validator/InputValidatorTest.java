@@ -8,9 +8,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Created by jxzhong on 2017/5/17.
  */
-public class InputValidatorTest {
+class InputValidatorTest {
     @Test
-    public void should_return_true_when_input_a_right_num() {
+    void should_return_true_when_input_a_right_num() {
         //given
         InputValidator inputValidator = new InputValidator();
         String num = "1 2 3 4";
@@ -21,7 +21,7 @@ public class InputValidatorTest {
     }
 
     @Test
-    public void should_return_false_when_given_a_non_Four_digits() {
+    void should_return_false_when_given_a_non_Four_digits() {
         //given
         InputValidator inputValidator = new InputValidator();
         String num = "1 2 3";
@@ -32,7 +32,7 @@ public class InputValidatorTest {
     }
 
     @Test
-    public void should_return_false_when_input_a_Four_digits_and_one_digit_exceed_ten() {
+    void should_return_false_when_input_a_Four_digits_and_one_digit_exceed_ten() {
         //given
         InputValidator inputValidator = new InputValidator();
         String num = "1 2 3 10";
@@ -43,7 +43,7 @@ public class InputValidatorTest {
     }
 
     @Test
-    public void should_return_false_when_given_a_Four_digits_and_two_digit_are_same() {
+    void should_return_false_when_given_a_Four_digits_and_two_digit_are_same() {
         //given
         InputValidator inputValidator = new InputValidator();
         String num = "1 2 3 1";

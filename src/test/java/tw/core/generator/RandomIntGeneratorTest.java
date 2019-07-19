@@ -26,7 +26,6 @@ class RandomIntGeneratorTest {
         //then
         assertThat(numStr).hasSize(7);
         assertThat(numStr.split("\\s").length).isEqualTo(4);
-
     }
 
     @Test()

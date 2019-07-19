@@ -53,7 +53,6 @@ class GameTest {
         String statusOfGame = game.checkStatus();
         //then
         assertThat(statusOfGame).isEqualTo("success");
-
     }
 
     @Test
