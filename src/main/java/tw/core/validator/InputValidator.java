@@ -2,7 +2,8 @@ package tw.core.validator;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 /**
  * Created by jxzhong on 2017/5/18.
@@ -19,7 +20,8 @@ public class InputValidator {
         return numList.stream()
                 .map(Integer::parseInt)
                 .distinct()
-                .filter(num -> num < 10).count() == numCount;
+                .filter(num -> num < 10)
+                .count() == numCount;
     }
 
     private Boolean validateDigitsCount(List<String> numList, int numCount) {
@@ -28,6 +30,6 @@ public class InputValidator {
 
     private List<String> numStrToList(String numStr) {
         return Arrays.stream(numStr.split(" "))
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 }

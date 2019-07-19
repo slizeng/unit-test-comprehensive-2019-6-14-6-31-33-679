@@ -1,8 +1,8 @@
 package tw.controllers;
 
 import com.google.inject.Inject;
-import tw.core.Game;
 import tw.commands.InputCommand;
+import tw.core.Game;
 import tw.core.exception.OutOfGuessCountException;
 import tw.core.model.GuessResult;
 import tw.views.GameView;
@@ -22,12 +22,11 @@ public class GameController {
         this.gameView = gameView;
     }
 
-    public void beginGame() throws IOException {
+    public void beginGame() {
         gameView.showBegin();
     }
 
     public void play(InputCommand command) throws IOException, OutOfGuessCountException {
-
         if (game.checkContinue()) {
             GuessResult guessResult = game.guess(command.input());
             gameView.showGuessResult(guessResult);
@@ -37,5 +36,4 @@ public class GameController {
             gameView.showGameStatus(game.checkStatus());
         }
     }
-
 }

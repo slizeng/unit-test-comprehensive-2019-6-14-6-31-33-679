@@ -23,14 +23,11 @@ public class GuessInputCommand implements InputCommand {
 
     @Override
     public Answer input() throws IOException {
+        InputValidator inputValidator = new InputValidator();
+
         System.out.println("------Please input your answer as x x x x , x <10 ------");
         String input = bufferedReader.readLine();
-        Answer answer = null;
-        if (new InputValidator().validate(input)) {
-            answer = Answer.createAnswer(input);
-        } else {
-            answer = input();
-        }
-        return answer;
+
+        return inputValidator.validate(input) ? Answer.createAnswer(input) : input();
     }
 }

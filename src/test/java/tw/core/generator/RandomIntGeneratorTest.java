@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 /**
  * Created by jxzhong on 2017/5/18.
  */
-public class RandomIntGeneratorTest {
+class RandomIntGeneratorTest {
 
     private RandomIntGenerator randomIntGenerator;
 
@@ -31,12 +31,8 @@ public class RandomIntGeneratorTest {
 
     @Test()
     void should_throw_exception_when_digitMax_less_than_numbersOfNeed() {
-
         //given
         //when
-        assertThrows(IllegalArgumentException.class, () -> {
-            randomIntGenerator.generateNums(4, 5);
-        });
-
+        assertThrows(IllegalArgumentException.class, () -> randomIntGenerator.generateNums(4, 5));
     }
 }

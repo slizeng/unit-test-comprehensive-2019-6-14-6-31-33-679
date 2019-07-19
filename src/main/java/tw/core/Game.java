@@ -6,9 +6,9 @@ import tw.core.exception.OutOfGuessCountException;
 import tw.core.generator.AnswerGenerator;
 import tw.core.model.GuessResult;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import static com.google.common.collect.Lists.newArrayList;
 import static tw.core.GameStatus.*;
 
 /**
@@ -24,7 +24,7 @@ public class Game {
     @Inject
     public Game(AnswerGenerator answerGenerator) throws AnswerFormatIncorrectException {
         this.actualAnswer = answerGenerator.generate();
-        this.guessResults = new ArrayList();
+        this.guessResults = newArrayList();
     }
 
     public GuessResult guess(Answer inputAnswer) throws OutOfGuessCountException {
@@ -58,6 +58,7 @@ public class Game {
     }
 
     private boolean checkCorrectGuessResult() {
-        return guessResults.stream().anyMatch(result -> result.getResult().contentEquals(CORRECT_RESULT_STANDARD));
+        return guessResults.stream().anyMatch(result ->
+                result.getResult().contentEquals(CORRECT_RESULT_STANDARD));
     }
 }

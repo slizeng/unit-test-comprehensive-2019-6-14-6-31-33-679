@@ -2,21 +2,12 @@ package tw.views;
 
 import tw.core.model.GuessResult;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.List;
 
 /**
  * Created by jxzhong on 2017/5/19.
  */
 public class GameView {
-
-    private BufferedReader bufferedReader;
-
-    {
-        bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-    }
-
     public void showGuessResult(GuessResult guessResult) {
         System.out.println("Guess Result: " + guessResult.getResult());
     }

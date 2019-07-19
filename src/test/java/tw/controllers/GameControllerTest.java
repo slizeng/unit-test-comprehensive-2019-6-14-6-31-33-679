@@ -4,9 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import tw.commands.InputCommand;
 import tw.core.Answer;
 import tw.core.Game;
-import tw.commands.InputCommand;
 import tw.core.exception.OutOfGuessCountException;
 import tw.core.generator.AnswerGenerator;
 import tw.core.model.GuessResult;
@@ -22,7 +22,7 @@ import static org.mockito.Mockito.when;
 /**
  * Created by jxzhong on 2017/5/19.
  */
-public class GameControllerTest {
+class GameControllerTest {
 
     @Mock
     private GameView mockGameView;
@@ -45,7 +45,6 @@ public class GameControllerTest {
         errorAnswer = Answer.createAnswer("1 2 5 6");
 
         when(mockGenerator.generate()).thenReturn(correctAnswer);
-//        game = new Game(mockGenerator);
         gameController = new GameController(game, mockGameView);
     }
 
@@ -84,14 +83,13 @@ public class GameControllerTest {
     }
 
     @Test
-    void should_begin_guess_game_when_call_begin_game() throws Exception {
+    void should_begin_guess_game_when_call_begin_game() {
         //given
         //when
         gameController.beginGame();
 
         //then
         verify(mockGameView).showBegin();
-
     }
 }
 

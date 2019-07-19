@@ -32,7 +32,7 @@ class LibraryTest {
 
     @Test
     @SuppressWarnings("unchecked")
-    void testMockClass() throws Exception {
+    void testMockClass() {
         // you can mock concrete classes, not only interfaces
         LinkedList mockedList = mock(LinkedList.class);
 

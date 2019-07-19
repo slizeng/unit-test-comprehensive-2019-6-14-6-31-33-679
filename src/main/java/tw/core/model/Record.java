@@ -5,7 +5,6 @@ public class Record {
 
     public Record() {
         this.value = new int[]{0, 0};
-
     }
 
     public String getValue() {
