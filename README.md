@@ -27,12 +27,30 @@ The answer is randomly generated at the beginning of the game. There are only 6 
 When inputting, separate the numbers with spaces.
 
 ## Practice Requirement:
-- **Design and write test cases after clearly understanding the requirements**
-- **Complete tests in the existing test file and ensure that the test coverage of the test category of this test file is 100%**
-- Unit testing should cover all core business logic
-- Make unit test refactoring with small steps
-- **Denominate meaningful names for unit tests and methods**
-- **Submit code in small steps with a comment on meaning**
+- Step 0:<br>
+    - **Clarify all business requirements of this game**
+    - **Write down test cases on your notebook, to cover all business logic from end to end**,
+    should follow format as below:
+    ```
+    GIVEN:
+    WHEN:
+    THEN:
+    ```
+- step 1:<br>
+    - Checkout branch to **`step1`**
+    - Play with the game via running `Main.java`
+    - Go through the code base to **totally understand the implementation**
+    - Draw a `task diagram` based on current implementation
+    - Write down `test cases` **against your task diagram**, method naming should follow format as below:
+    ```
+    should_xx_xx_when_xx_xx_given_xx_xx() or should_xx_xx_when_xx_xx();
+    ```
+    - run Jacoco to test your coverages.
+    - commit and push your changes on branch step1.
+- step 2 <br>
+    - Checkout branch to **`step2`**
+    - Go through the tests in codebase comparing with yours
+    - write down notes about what you learn, questions and thoughts.  
 
 #### Environment Requirement
 - Java 8
@@ -48,5 +66,6 @@ When inputting, separate the numbers with spaces.
 - Implement `./gradlew clean test` under root catalogue and view test result
  
 ## Practice Output && Submit
-- You should implement the test code and push your repo to github repo named **unit-test-comprehensive**.
-- Commit your repository link to complete this Question.
+- You should implement the test code on branch **`step1`** and push your repo to github repo named **unit-test-comprehensive**.
+- You need to finally put your first end-to-end test cases and your learning notes into branch **`step1`**, put them under root path
+- Commit your repository link to complete this Question with branch **`step1`**
