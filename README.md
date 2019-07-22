@@ -52,10 +52,9 @@ When inputting, separate the numbers with spaces.
 - step 1:
     - step 1-0:
         - Checkout branch to `step1`
-    - step 1-1:
         - Play with the game via running `Main.java`, thinking how to test this game completely, review your cases. (only focus on core business)
-        - Go through the code base to **totally understand the implementation** and take reference to given `diagram`: diagram.png 
-    - step 1-2: <br>
+        - Go through the codebase to **totally understand the implementation**
+    - step 1-1:
         - Complete `unit tests` in `AnswerTest`, _tests should be focus on the Answer only_ <br>
             For example:
             ```
@@ -71,7 +70,7 @@ When inputting, separate the numbers with spaces.
                 assertEquals(result, expectValue);
             }
             ```
-    - step 1-3:<br>
+    - step 1-2:
         - Complete `unit tests` in `InputValidatorTest`, _tests should be focus on the InputValidator only_ <br>
             For example:
             ```
@@ -86,10 +85,10 @@ When inputting, separate the numbers with spaces.
                 assertTrue(isValidated);
             }
             ```
-    - step 1-4:
+    - step 1-3:
         - run Jacoco to test your coverages.
         - commit and push your changes on branch step1.
-    - step 1-5: **OPTIONAL** <br>
+    - step 1-4: **OPTIONAL**
         - Try to complete more tests against other classes to improve your test coverage.
 
 - step 2:
