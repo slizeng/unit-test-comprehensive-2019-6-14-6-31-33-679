@@ -31,7 +31,7 @@ public class Game {
         if (!checkContinue()) {
             throw new OutOfGuessCountException("Guess count cant over 6!");
         }
-        final String result = actualAnswer.check(inputAnswer).getValue();
+        final String result = actualAnswer.check(inputAnswer);
         GuessResult guessResult = new GuessResult(result, inputAnswer);
         guessResults.add(guessResult);
         return guessResult;

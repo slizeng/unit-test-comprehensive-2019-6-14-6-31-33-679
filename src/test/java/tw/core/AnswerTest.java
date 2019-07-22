@@ -2,9 +2,10 @@ package tw.core;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tw.core.model.Record;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static tw.core.Answer.*;
 
 /**
  * Created by jxzhong on 2017/9/23.
@@ -14,53 +15,73 @@ class AnswerTest {
 
     @BeforeEach
     void setUp() {
-        actualAnswer = Answer.createAnswer("1 2 3 4");
+        actualAnswer = createAnswer("1 2 3 4");
     }
 
     @Test
-    void should_return_0A0B_when_no_number_is_correct() {
-        //when
-        String inputAnswerStr = "5 6 7 8";
-        String expectValue = "0A0B";
-        //then
-        validateGuessNumber(inputAnswerStr, expectValue);
-    }
-
-    @Test
-    void should_return_4A0B_when_1_is_correct() {
+    void should_return_0A0B_when_no_number_is_correct_or_included() {
         //given
-        String inputAnswerStr = "1 2 3 4";
-        String expectValue = "4A0B";
-
+        Answer inputAnswer = createAnswer("5 6 7 8");
+        String expectValue = "0A0B";
+        //when
+        String result = actualAnswer.check(inputAnswer);
         //then
-        validateGuessNumber(inputAnswerStr, expectValue);
+        assertEquals(result, expectValue);
     }
 
     @Test
-    void should_return_0A4B_when_2_and_4_are_include() {
+    void should_return_0A1B_when_only_a_number_is_included() {
+        //given
+        Answer inputAnswer = createAnswer("4 5 6 7");
+        String expectValue = "0A1B";
         //when
-        String inputAnswerStr = "4 3 2 1";
+        String result = actualAnswer.check(inputAnswer);
+        //then
+        assertEquals(result, expectValue);
+    }
+
+    @Test
+    void should_return_0A4B_when_4_numbers_are_included() {
+        //given
+        Answer inputAnswer = createAnswer("4 3 2 1");
         String expectValue = "0A4B";
+        //when
+        String result = actualAnswer.check(inputAnswer);
         //then
-        validateGuessNumber(inputAnswerStr, expectValue);
+        assertEquals(result, expectValue);
     }
 
     @Test
-    void should_return_2A2B_when_1_3_are_correct_and_4_2_are_include() {
+    void should_return_1A0B_when_only_one_number_is_correct() {
+        //given
+        Answer inputAnswer = createAnswer("1 5 6 7");
+        String expectValue = "1A0B";
         //when
-        String inputAnswerStr = "1 5 8 2";
-        String expectValue = "1A1B";
+        String result = actualAnswer.check(inputAnswer);
         //then
-        validateGuessNumber(inputAnswerStr, expectValue);
+        assertEquals(result, expectValue);
     }
 
-    private void validateGuessNumber(String inputAnswerStr, String expectValue) {
-        Answer inputAnswer = Answer.createAnswer(inputAnswerStr);
 
+    @Test
+    void should_return_4A0B_when_only_all_numbers_are_correct() {
+        //given
+        Answer inputAnswer = createAnswer("1 2 3 4");
+        String expectValue = "4A0B";
         //when
-        Record result = actualAnswer.check(inputAnswer);
-
+        String result = actualAnswer.check(inputAnswer);
         //then
-        assertThat(result.getValue()).isEqualTo(expectValue);
+        assertEquals(result, expectValue);
+    }
+
+    @Test
+    void should_return_1A1B_when_one_number_is_included_and_one_is_correct() {
+        //given
+        Answer inputAnswer = createAnswer("1 5 6 2");
+        String expectValue = "1A1B";
+        //when
+        String result = actualAnswer.check(inputAnswer);
+        //then
+        assertEquals(result, expectValue);
     }
 }

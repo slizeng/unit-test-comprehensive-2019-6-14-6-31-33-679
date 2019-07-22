@@ -28,47 +28,83 @@ When inputting, separate the numbers with spaces.
 
 ## Practice Requirement:
 - Step 0: stay on branch `master`<br>
-    - step 0-0: **Clarify all business requirements of this game**
-    - step 0-1: **Write down `sad pass` test cases into `CASES.md`, to cover the scenarios with invalid inputs**, commit your changes
-    For example:
-    ```
-    GIVEN: a game started and there are guess chances left
-    WHEN: guess with typing empty and press enter
-    THEN: console will NOT print result and prompt user to input
-    ```
-    - step 0-2: **Write down `happy pass` test cases into `CASES.md` , to cover the scenarios with valid inputs**, commit your changes
-    For example:
-    ```
-    GIVEN: a game started and there are guess chances left
-    AND: the answer is 1 2 3 4
-    WHEN: guess with typing '5 6 7 8'
-    THEN: console will print result guess result as 0A0B and guess history including this trail
-    AND: prompt user to input
-    ```
-- step 1:<br>
-    - step 1-0:<br>
-    checkout branch to `step1`, merge your changes into step1 from master
-    - step 1-1:<br>
-    Play with the game via running `Main.java`, thinking how to test this game completely, review your cases(only focus on core business)
+    - step 0-0: 
+        - Clarify all business requirements of this game
+    - step 0-1: 
+        - Write down `sad pass` test cases into `CASES.md`, to cover the scenarios with **invalid inputs**, commit your changes<br>
+            For example:
+            ```
+            GIVEN: a game started and there are guess chances left
+            WHEN: guess with typing empty and press enter
+            THEN: console will NOT print result and prompt user to input
+            ```
+    - step 0-2: 
+        - Write down `happy pass` test cases into `CASES.md` , to cover the scenarios with **valid inputs**, commit your changes <br>
+            For example:
+            ```
+            GIVEN: a game started and there are guess chances left
+            AND: the answer is 1 2 3 4
+            WHEN: guess with typing '5 6 7 8'
+            THEN: console will print result guess result as 0A0B and guess history including this trail
+            AND: prompt user to input
+            ```
+
+- step 1:
+    - step 1-0:
+        - Checkout branch to `step1`
+    - step 1-1:
+        - Play with the game via running `Main.java`, thinking how to test this game completely, review your cases. (only focus on core
+        - Go through the code base to **totally understand the implementation** and take reference to given `diagram`: <ROOT_PATH>/diagram.png 
+        business)
     - step 1-2: <br>
-        - Go through the code base to **totally understand the implementation** with given `diagram`: <ROOT_PATH>/diagram.png
-        - Write down `unit tests` **against task diagram**, _only need to focus on the part of core business marked as blue in diagram_, naming should follow format as below:
-    ```
-    should_xx_xx_when_xx_xx_given_xx_xx() or should_xx_xx_when_xx_xx();
-    ```
+        - Complete `unit tests` in `AnswerTest`, _tests should be focus on the Answer only_ <br>
+            For example:
+            ```
+            @Test
+            void should_return_0A0B_when_no_number_is_correct_or_included() {
+                //given
+                Answer actualAnswer = createAnswer("1 2 3 4");
+                Answer inputAnswer = createAnswer("5 6 7 8");
+                String expectValue = "0A0B";
+                //when
+                String result = actualAnswer.check(inputAnswer);
+                //then
+                assertEquals(result, expectValue);
+            }
+            ```
     - step 1-3:<br>
-    run Jacoco to test your coverages.
-    - commit and push your changes on branch step1.
-- step 2 <br>
-    - step 2-0:<br>
+        - Complete `unit tests` in `InputValidatorTest`, _tests should be focus on the InputValidator only_ <br>
+            For example:
+            ```
+            @Test
+            void should_return_true_when_validate_4_diff_digits_separated_by_single_space() {
+                //given
+                InputValidator inputValidator = new InputValidator();
+                String input = "1 2 3 4";
+                //when
+                Boolean isValidated = inputValidator.validate(input);
+                //then
+                assertTrue(isValidated);
+            }
+            ```
+    - step 1-4:
+        - run Jacoco to test your coverages.
+        - commit and push your changes on branch step1.
+    - step 1-5: **OPTIONAL** <br>
+        - Try to complete more tests against other classes to improve your test coverage.
+
+- step 2:
+    - step 2-0:
         - Checkout branch to **`step2`**
         - Run Jacoco to test coverage
         - Go through the tests in codebase comparing with yours
-        - Draw a concept map with topic: `What I Learnt with Unit Test` <br>
-        should include key words as below at least: `End to end test`, `Unit test`, `Test pyramid`, `Business requirements`, `Stub`, 
-        `Mock`, `Test cases`, `Boundary value`, `Equivalence class`, `happy pass`, `sad pass` and etc 
-        - step 2-1:<br>
-        checkout branch to `step 1`, commit screenshot of your concept map as `NOTES.png`
+    - step 2-1:
+        - Draw a concept map with topic: **`What I Learnt with Unit Test`**:
+            - think about the `difference of thoughts` when you were focus on end to end tests and unit tests, and try to understand why we need to write unit tests like that. 
+            - should include key words as below at least: `End to end test`, `Unit test`, `Test pyramid`, `Business requirements`, `Stub`, 
+                `Mock`, `Test cases`, `Boundary value`, `Equivalence class`, `happy pass`, `sad pass` and etc
+    - step 2-2:
+        - checkout branch to `step 1`, commit screenshot of your concept map as `NOTES.png`
 
 #### Environment Requirement
 - Java 8

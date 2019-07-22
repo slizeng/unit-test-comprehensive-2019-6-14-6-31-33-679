@@ -3,6 +3,7 @@ package tw.core.validator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 /**
@@ -10,14 +11,14 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class InputValidatorTest {
     @Test
-    void should_return_true_when_input_a_right_num() {
+    void should_return_true_when_validate_4_diff_digits_separated_by_single_space() {
         //given
         InputValidator inputValidator = new InputValidator();
-        String num = "1 2 3 4";
-        //whens
-        Boolean isValidated = inputValidator.validate(num);
+        String input = "1 2 3 4";
+        //when
+        Boolean isValidated = inputValidator.validate(input);
         //then
-        assertThat(isValidated).isTrue();
+        assertTrue(isValidated);
     }
 
     @Test

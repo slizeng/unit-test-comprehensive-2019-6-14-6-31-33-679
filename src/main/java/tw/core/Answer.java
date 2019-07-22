@@ -21,7 +21,7 @@ public class Answer {
         return answer;
     }
 
-    public Record check(Answer inputAnswer) {
+    public String check(Answer inputAnswer) {
         Record record = new Record();
 
         this.numList.forEach(num -> {
@@ -35,7 +35,7 @@ public class Answer {
             }
         });
 
-        return record;
+        return record.getValue();
     }
 
     public int getIndexOfNum(String num) {
