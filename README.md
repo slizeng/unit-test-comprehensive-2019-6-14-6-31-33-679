@@ -27,30 +27,48 @@ The answer is randomly generated at the beginning of the game. There are only 6 
 When inputting, separate the numbers with spaces.
 
 ## Practice Requirement:
-- Step 0:<br>
-    - **Clarify all business requirements of this game**
-    - **Write down test cases on your notebook, to cover all business logic from end to end**,
-    should follow format as below:
+- Step 0: stay on branch `master`<br>
+    - step 0-0: **Clarify all business requirements of this game**
+    - step 0-1: **Write down `sad pass` test cases into `CASES.md`, to cover the scenarios with invalid inputs**, commit your changes
+    For example:
     ```
-    GIVEN:
-    WHEN:
-    THEN:
+    GIVEN: a game started and there are guess chances left
+    WHEN: guess with typing empty and press enter
+    THEN: console will NOT print result and prompt user to input
+    ```
+    - step 0-2: **Write down `happy pass` test cases into `CASES.md` , to cover the scenarios with valid inputs**, commit your changes
+    For example:
+    ```
+    GIVEN: a game started and there are guess chances left
+    AND: the answer is 1 2 3 4
+    WHEN: guess with typing '5 6 7 8'
+    THEN: console will print result guess result as 0A0B and guess history including this trail
+    AND: prompt user to input
     ```
 - step 1:<br>
-    - Checkout branch to **`step1`**
-    - Play with the game via running `Main.java`
-    - Go through the code base to **totally understand the implementation**
-    - Draw a `task diagram` based on current implementation
-    - Write down `test cases` **against your task diagram**, method naming should follow format as below:
+    - step 1-0:<br>
+    checkout branch to `step1`, merge your changes into step1 from master
+    - step 1-1:<br>
+    Play with the game via running `Main.java`, thinking how to test this game completely, review your cases(only focus on core business)
+    - step 1-2: <br>
+        - Go through the code base to **totally understand the implementation** with given `diagram`: <ROOT_PATH>/diagram.png
+        - Write down `unit tests` **against task diagram**, _only need to focus on the part of core business marked as blue in diagram_, naming should follow format as below:
     ```
     should_xx_xx_when_xx_xx_given_xx_xx() or should_xx_xx_when_xx_xx();
     ```
-    - run Jacoco to test your coverages.
+    - step 1-3:<br>
+    run Jacoco to test your coverages.
     - commit and push your changes on branch step1.
 - step 2 <br>
-    - Checkout branch to **`step2`**
-    - Go through the tests in codebase comparing with yours
-    - write down notes about what you learn, questions and thoughts.  
+    - step 2-0:<br>
+        - Checkout branch to **`step2`**
+        - Run Jacoco to test coverage
+        - Go through the tests in codebase comparing with yours
+        - Draw a concept map with topic: `What I Learnt with Unit Test` <br>
+        should include key words as below at least: `End to end test`, `Unit test`, `Test pyramid`, `Business requirements`, `Stub`, 
+        `Mock`, `Test cases`, `Boundary value`, `Equivalence class`, `happy pass`, `sad pass` and etc 
+        - step 2-1:<br>
+        checkout branch to `step 1`, commit screenshot of your concept map as `NOTES.png`
 
 #### Environment Requirement
 - Java 8
@@ -67,5 +85,5 @@ When inputting, separate the numbers with spaces.
  
 ## Practice Output && Submit
 - You should implement the test code on branch **`step1`** and push your repo to github repo named **unit-test-comprehensive**.
-- You need to finally put your first end-to-end test cases and your learning notes into branch **`step1`**, put them under root path
-- Commit your repository link to complete this Question with branch **`step1`**
+- You need to collect `CASES.md` and `NOTES.png` into branch **`step1`** as well, put them under root path
+- Commit your repository link to complete this Question, fill branch as **`step1`**
