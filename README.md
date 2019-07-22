@@ -11,14 +11,14 @@ There is a game that realizes guessing numbers. There are four grids in the game
 
 ```
 Input　　    Output             Instruction
-1 5 6 7      1A0B                 1 correct
-2 4 7 8      0A2B                 2 and 4 wrong position 
-0 3 2 4      1A2B                 4 correct，2 and 3 wrong position
-5 6 7 8      0A0B                 all wrong
-4 3 2 1      0A4B                 4 numbers position wrong
-1 2 3 4      4A0B                 win, all correct
-1 1 2 3      Wrong input，let user type again without showing error message
-1 2          Wrong input，let user type again without showing error message
+1 5 6 7     1A0B               one correct number (1) only
+2 4 7 8     0A2B               two included number (2, 4) but with wrong position only 
+0 3 2 4     1A2B               one correct number(4)，and two inlucded number(3, 2)
+5 6 7 8     0A0B               all wrong
+4 3 2 1     0A4B               4 included numbers with wrong position
+1 2 3 4     4A0B               4 correct numbers
+1 1 2 3     Wrong input，should let user type again without showing error message
+1 2         Wrong input，should let user type again without showing error message
 ```
  
 The answer is randomly generated at the beginning of the game. There are only 6 chances for input.  Each time when you guess, the program
@@ -53,9 +53,8 @@ When inputting, separate the numbers with spaces.
     - step 1-0:
         - Checkout branch to `step1`
     - step 1-1:
-        - Play with the game via running `Main.java`, thinking how to test this game completely, review your cases. (only focus on core
-        - Go through the code base to **totally understand the implementation** and take reference to given `diagram`: <ROOT_PATH>/diagram.png 
-        business)
+        - Play with the game via running `Main.java`, thinking how to test this game completely, review your cases. (only focus on core business)
+        - Go through the code base to **totally understand the implementation** and take reference to given `diagram`: diagram.png 
     - step 1-2: <br>
         - Complete `unit tests` in `AnswerTest`, _tests should be focus on the Answer only_ <br>
             For example:
@@ -102,7 +101,7 @@ When inputting, separate the numbers with spaces.
         - Draw a concept map with topic: **`What I Learnt with Unit Test`**:
             - think about the `difference of thoughts` when you were focus on end to end tests and unit tests, and try to understand why we need to write unit tests like that. 
             - should include key words as below at least: `End to end test`, `Unit test`, `Test pyramid`, `Business requirements`, `Stub`, 
-                `Mock`, `Test cases`, `Boundary value`, `Equivalence class`, `happy pass`, `sad pass` and etc
+                `Mock`, `Test cases`, `Boundary value`, `Equivalence class`, `Happy pass`, `Sad pass` and etc
     - step 2-2:
         - checkout branch to `step 1`, commit screenshot of your concept map as `NOTES.png`
 
