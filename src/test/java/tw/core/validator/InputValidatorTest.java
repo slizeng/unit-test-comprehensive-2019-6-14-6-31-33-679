@@ -2,7 +2,7 @@ package tw.core.validator;
 
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -14,43 +14,54 @@ class InputValidatorTest {
     void should_return_true_when_validate_4_diff_digits_separated_by_single_space() {
         //given
         InputValidator inputValidator = new InputValidator();
-        String input = "1 2 3 4";
+        String input = "0 1 2 9";
         //when
-        Boolean isValidated = inputValidator.validate(input);
+        Boolean isValid = inputValidator.validate(input);
         //then
-        assertTrue(isValidated);
+        assertTrue(isValid);
     }
 
     @Test
-    void should_return_false_when_given_a_non_Four_digits() {
+    void should_return_false_when_validate_a_non_four_digits() {
         //given
         InputValidator inputValidator = new InputValidator();
-        String num = "1 2 3";
+        String input = "1 2 3";
         //whens
-        Boolean isValidated = inputValidator.validate(num);
+        Boolean isValid = inputValidator.validate(input);
         //then
-        assertThat(isValidated).isFalse();
+        assertFalse(isValid);
     }
 
     @Test
-    void should_return_false_when_input_a_Four_digits_and_one_digit_exceed_ten() {
+    void should_return_false_when_validate_input_a_four_digits_and_one_digit_exceed_ten() {
         //given
         InputValidator inputValidator = new InputValidator();
-        String num = "1 2 3 10";
+        String input = "1 2 3 10";
         //whens
-        Boolean isValidated = inputValidator.validate(num);
+        Boolean isValid = inputValidator.validate(input);
         //then
-        assertThat(isValidated).isFalse();
+        assertFalse(isValid);
     }
 
     @Test
-    void should_return_false_when_given_a_Four_digits_and_two_digit_are_same() {
+    void should_return_false_when_validate_a_four_digits_and_two_digits_are_same() {
         //given
         InputValidator inputValidator = new InputValidator();
-        String num = "1 2 3 1";
+        String input = "1 2 3 1";
         //whens
-        Boolean isValidated = inputValidator.validate(num);
+        Boolean isValid = inputValidator.validate(input);
         //then
-        assertThat(isValidated).isFalse();
+        assertFalse(isValid);
+    }
+
+    @Test
+    void should_return_false_when_validate_input_given_invalid_separators() {
+        //given
+        InputValidator inputValidator = new InputValidator();
+        String invalidInput = "1_2\t3\n4";
+        //whens
+        Boolean isValid = inputValidator.validate(invalidInput);
+        //then
+        assertFalse(isValid);
     }
 }
